@@ -1,9 +1,8 @@
 FROM node:14-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-ADD ./node_modules.tar.gz .
+WORKDIR /front
+ADD node_modules.tar.gz ./
 COPY . .
 EXPOSE 3000
-ENV todobackend=3001
+ENV REACT_APP_API_HOST=todoback
+ENV REACT_APP_API_PORT=3001
 ENTRYPOINT [ "npm", "start" ]
